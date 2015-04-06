@@ -5,8 +5,8 @@ FROM stackbrew/debian:wheezy
 
 WORKDIR [[ .Container.GetFirstMountedDir ]]
 
-# Install PHP 5.4
-RUN apt-get -y -f install php5 php5-mysql php5-mcrypt php5-curl curl
+# Install PHP 5.6
+RUN apt-get -y -f install php56 php56-mysql php56-mcrypt php56-curl curl php56-intl
 
 # Add custom setup script
 [[ beforeAfterScripts ]]
