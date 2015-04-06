@@ -6,7 +6,7 @@ FROM stackbrew/debian:wheezy
 WORKDIR [[ .Container.GetFirstMountedDir ]]
 
 # Install PHP FPM
-RUN apt-get -y -f install php56-fpm php56-cli php56-mysql php56-mcrypt php56-curl curl
+RUN apt-get -y -f install php56-fpm php56-cli php56-mysql php56-mcrypt php56-curl curl php56-intl
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
@@ -14,7 +14,7 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 [[ $memoryLimit := .Container.GetCustomValue "memoryLimit" "128M" ]]
 [[ $maxExecutionTime := .Container.GetCustomValue "maxExecutionTime" "30" ]]
 [[ $maxInputTime := .Container.GetCustomValue "maxInputTime" "60" ]]
-[[ $locale := .Container.GetCustomValue "locale" "Europe/Paris" ]]
+[[ $locale := .Container.GetCustomValue "locale" "Asia/Bangkok" ]]
 
 RUN sed -i 's|listen = /var/run/php56-fpm.sock|listen = [[ .Container.GetFirstLocalPort ]]|g' /etc/php56/fpm/pool.d/www.conf
 RUN sed -i 's|;cgi.fix_pathinfo=0|cgi.fix_pathinfo=0|g' /etc/php56/fpm/pool.d/www.conf
